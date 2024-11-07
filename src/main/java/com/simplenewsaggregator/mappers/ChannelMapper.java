@@ -14,7 +14,7 @@ public interface ChannelMapper {
     ChannelMapper INSTANCE = Mappers.getMapper(ChannelMapper.class);
 
     @Mapping(target = "url", source = "link")
-    Publisher rssDtoToPublisher(ChannelDto rssDto);
+    Publisher channelDtoToPublisher(ChannelDto rssDto);
 
-    PublisherConfiguration rssDtoToPublisherConfiguration(ChannelDto rssDto);
+    PublisherConfiguration channelDtoToPublisherConfiguration(ChannelDto rssDto);
 }

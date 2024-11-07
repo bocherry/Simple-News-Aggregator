@@ -13,6 +13,22 @@ public class ChannelDto {
     private int updateFrequency;
     private ArrayList<ItemDto> items;
 
+
+    public ChannelDto() {
+    }
+
+
+
+    public ChannelDto(String title, String link, String description, String language, String updatePeriod, int updateFrequency, ArrayList<ItemDto> items) {
+        this.title = title;
+        this.link = link;
+        this.description = description;
+        this.language = language;
+        this.updatePeriod = updatePeriod;
+        this.updateFrequency = updateFrequency;
+        this.items = items;
+    }
+
     public String getTitle() {
         return this.title;
     }

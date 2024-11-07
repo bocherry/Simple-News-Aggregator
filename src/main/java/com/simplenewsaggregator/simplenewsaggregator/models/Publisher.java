@@ -5,14 +5,24 @@ public class Publisher {
     private String title;
     private String description;
     private String url;
+    private String language;
 
     public Publisher() {
     }
 
-    public Publisher(String title, String description, String url) {
+    public Publisher(String title, String description, String url, String language) {
         this.title = title;
         this.description = description;
         this.url = url;
+        this.language = language;
+    }
+
+    public String getLanguage() {
+        return this.language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public String getTitle() {
@@ -70,13 +80,16 @@ public class Publisher {
         return Objects.hash(title, description, url);
     }
 
+
     @Override
     public String toString() {
         return "{" +
             " title='" + getTitle() + "'" +
             ", description='" + getDescription() + "'" +
             ", url='" + getUrl() + "'" +
+            ", language='" + getLanguage() + "'" +
             "}";
     }
+
 
 }

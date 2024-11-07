@@ -4,13 +4,13 @@ import java.util.Objects;
 public class PublisherConfiguration {
     private String RSSUrl;
     private String updatePeriod;
-    private String updateFrequency;
+    private int updateFrequency;
 
 
     public PublisherConfiguration() {
     }
 
-    public PublisherConfiguration(String RSSUrl, String updatePeriod, String updateFrequency) {
+    public PublisherConfiguration(String RSSUrl, String updatePeriod, int updateFrequency) {
         this.RSSUrl = RSSUrl;
         this.updatePeriod = updatePeriod;
         this.updateFrequency = updateFrequency;
@@ -32,11 +32,11 @@ public class PublisherConfiguration {
         this.updatePeriod = updatePeriod;
     }
 
-    public String getUpdateFrequency() {
+    public int getUpdateFrequency() {
         return this.updateFrequency;
     }
 
-    public void setUpdateFrequency(String updateFrequency) {
+    public void setUpdateFrequency(int updateFrequency) {
         this.updateFrequency = updateFrequency;
     }
 
@@ -50,7 +50,7 @@ public class PublisherConfiguration {
         return this;
     }
 
-    public PublisherConfiguration updateFrequency(String updateFrequency) {
+    public PublisherConfiguration updateFrequency(int updateFrequency) {
         setUpdateFrequency(updateFrequency);
         return this;
     }
