@@ -3,7 +3,16 @@ package com.simplenewsaggregator.simplenewsaggregator.dtos;
 public class ItemDto {
     private String title;
     private String link;
+
+    public ItemDto() {
+    }
     private String description;
+
+    public ItemDto(String title, String link, String description) {
+        this.title = title;
+        this.link = link;
+        this.description = description;
+    }
 
     public String getTitle() {
         return this.title;
