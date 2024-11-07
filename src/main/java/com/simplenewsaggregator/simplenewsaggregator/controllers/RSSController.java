@@ -23,7 +23,7 @@ public class RSSController {
     @GetMapping("/rss")
     public String addRSS(@RequestParam(value="url") String param) throws Exception {
         String rss = restTemplate.getForObject(param, String.class);
-        System.out.println(xmlUnmarshalService.unmarshalChannelDto(rss));
+        System.out.println(xmlUnmarshalService.unmarshalRssDto(rss));
         return rss;
     }
     

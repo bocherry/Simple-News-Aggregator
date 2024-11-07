@@ -1,43 +1,40 @@
 <binding>
+    <namespace uri="http://www.w3.org/2005/Atom" prefix="atom"/>
+    <namespace uri="http://purl.org/rss/1.0/modules/syndication/" prefix="sy"/>
+    <namespace uri="http://purl.org/dc/elements/1.1/" prefix="dc"/>
+    <namespace uri="http://wellformedweb.org/CommentAPI/" prefix="wfw"/>
+    <namespace uri="http://purl.org/rss/1.0/modules/slash/" prefix="slash"/>
 
-    <!-- <namespace uri="http://www.w3.org/2005/Atom" prefix="atom"/> -->
+    <mapping name="rss" class="com.simplenewsaggregator.simplenewsaggregator.dtos.RssDto">
+        <structure name="channel" field="channelDto">
+            <value name="title" field="title"/>
+            <structure name="link" ns="http://www.w3.org/2005/Atom" usage="optional"/>
+            <value name="link" field="link"/>
+            <value name="description" field="description"/>
+            <structure name="lastBuildDate" usage="optional"/>
+            <value name="language" field="language" usage="optional"/>
+            <value name="updatePeriod" ns="http://purl.org/rss/1.0/modules/syndication/" field="updatePeriod" usage="optional"/>
+            <value name="updateFrequency" ns="http://purl.org/rss/1.0/modules/syndication/" field="updateFrequency" usage="optional"/>
+            <structure name="generator" usage="optional"/>
+            <collection field="items" item-type="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto"/>
+        </structure>
+    </mapping>
+    
 
     <mapping name="item" class="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto">
         <value name="title" field="title"/>
         <value name ="link" field="link"/>
+        <structure name="comments" usage="optional"/>
+        <structure name="creator" ns="http://purl.org/dc/elements/1.1/" usage="optional"/>
+        <structure name="pubDate" usage="optional"/>
+        <!-- works for multiple fields in sequence -->
+        <structure name="category" usage="optional"/>
+        <structure name="guid" usage="optional"/>
         <value name="description" field="description"/>
+        <structure name="commentRss" ns="http://wellformedweb.org/CommentAPI/" usage="optional"/>
+        <structure name="comments" ns="http://purl.org/rss/1.0/modules/slash/" usage="optional"/>
     </mapping>
 
 
-    <!-- <mapping name="channel" class="com.simplenewsaggregator.simplenewsaggregator.dtos.ChannelDto">
-        <value name="title" field="title"/>
-        <value name="link" field="link"/>
-        <value name="description" field="description"/>
-        <value name="language" field="language"/>
-        <value name="sy:updatePeriod" field="updatePeriod"/>
-        <value name="sy:updateFrequency" field="updateFrequency"/>
-        <collection field="items" item-type="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto"/>
-    </mapping> -->
-
-    <!-- <mapping name="rss" class="com.simplenewsaggregator.simplenewsaggregator.dtos.RssDto">
-        <value name="channel" field="channelDto"/>
-        <structure name="channel" field="channelDto">
-            
-        </structure>
-    </mapping>
- -->
-    
-    <mapping name="rss" class="com.simplenewsaggregator.simplenewsaggregator.dtos.RssDto">
-        <namespace uri="http://purl.org/rss/1.0/modules/syndication/" prefix="sy" default="attributes"/>
-        <structure name="channel" field="channelDto">
-            <value name="title" field="title"/>
-            <value name="link" field="link"/>
-            <value name="description" field="description"/>
-            <value name="language" field="language"/>
-            <!-- <value name="sy:updatePeriod" field="updatePeriod"/>
-            <value name="sy:updateFrequency" field="updateFrequency"/> -->
-            <collection field="items" item-type="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto"/>
-        </structure>
-    </mapping>
 
 </binding>

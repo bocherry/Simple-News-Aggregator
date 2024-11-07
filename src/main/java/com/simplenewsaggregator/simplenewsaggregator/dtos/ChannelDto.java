@@ -65,7 +65,7 @@ public class ChannelDto {
         return this.items;
     }
 
-    public void setItems(List<ItemDto> items) {
+    public void setItems(ArrayList<ItemDto> items) {
         this.items = items;
     }
 

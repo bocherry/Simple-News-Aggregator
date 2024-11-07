@@ -11,7 +11,7 @@ import com.simplenewsaggregator.simplenewsaggregator.dtos.RssDto;
 
 @Service
 public class XMLUnmarshalService {
-    public RssDto unmarshalChannelDto(String rss) throws Exception {
+    public RssDto unmarshalRssDto(String rss) throws Exception {
         IBindingFactory factory = BindingDirectory.getFactory(RssDto.class);
         IUnmarshallingContext unmarshallingContext = factory.createUnmarshallingContext();
 

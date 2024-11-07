@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Canard PC</title>
+	<!-- <atom:link href="https://www.canardpc.com/feed" rel="self" type="application/rss+xml" /> -->
+	<link>https://www.canardpc.com</link>
+	<description>Le magazine en ligne des jeux vidéo, hardware et jeux de plateau</description>
+	<lastBuildDate>Tue, 05 Nov 2024 14:52:32 +0000</lastBuildDate>
+	<language>fr-FR</language>
+	<!-- <sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency> -->
+	<generator>https://wordpress.org/?v=5.9.5</generator>
+	<item>
+		<title>Les trois frères</title>
+		<link>https://www.canardpc.com/news/les-trois-freres/</link>
+		
+		<!-- <dc:creator><![CDATA[L.F. Sébum]]></dc:creator> -->
+		<pubDate>Wed, 06 Nov 2024 13:00:29 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[461]]></category>
+		<guid isPermaLink="false">https://www.canardpc.com/?post_type=news&#038;p=63885</guid>
+
+					<description><![CDATA[C'est bientôt Noël, l'heure des contes et des belles histoires. Par exemple celle de Asad, Asif et Ash Habib, trois frères passionnés de jeu vidéo mais dénués de la moindre expérience en matière de développement, qui un beau matin se sont dit « tiens, si on faisait un jeu de boxe ? » À force de journées passées à apprendre la programmation et la modélisation 3D devant des tutos YouTube, ils ont fini par obtenir quelque chose de vaguement montrable. Ils ont alors quitté leur emploi, commencé à démarcher des fédérations de boxe pour obtenir le droit d'utiliser l'image de sportifs bien réels. Le résultat : Undisputed, qui a à lui seul remis le jeu de boxe à la mode et s'est écoulé à plus d'un millions de copies. Certes, le jeu s'est fait descendre par la critique et est jugé « plutôt négativement » sur Steam, mais c'est comme ça avec les contes de Noël, il faut s'intéresser à l'esprit, pas à la lettre. LFS.]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>Les tas de l&#8217;art</title>
+		<link>https://www.canardpc.com/news/les-tas-de-lart/</link>
+		
+		<!-- <dc:creator><![CDATA[L.F. Sébum]]></dc:creator> -->
+		<pubDate>Wed, 06 Nov 2024 08:00:33 +0000</pubDate>
+				<category><![CDATA[News]]></category>
+		<category><![CDATA[461]]></category>
+		<guid isPermaLink="false">https://www.canardpc.com/?post_type=news&#038;p=63879</guid>
+
+					<description><![CDATA[Si vous avez 16 000 balles de côté et l'envie pressante de vous faire humilier par ackboo lors du prochain tribunal des bureaux, vous voudrez sans doute acheter « Medusa », un PC disons, euh… différent créé par la marque singapourienne Aftershock. En plus de PC gaming ordinaires, Aftershock propose en effet une gamme de PC « d'art » qui, non contents d'offrir un hardware assez brutal (Ryzen 7 7800X3D et GeForce 4090), ont des formes qui seront du meilleur effet sur votre bureau, pour peu que vous ne fréquentiez que des gens dénués du moindre goût. Le « Medusa » ressemble à ce qui serait passé à la fin de La Mouche si Seth Brundle avait fusionné avec une statue de Cellini. Le « Alien » est inspiré du xénomorphe de Giger. Quant au « Infinity », on se demande s'il s'agit d'une machine de jeu ou d'un caisson de cryogénisation. C'est hideux, certes, mais n'oublions pas qu'on part de très bas et qu'il s'agit toujours d'une vaste amélioration par rapport aux boîtiers RGB 50 000 lumens et aux tapis de souris avec des nichons. LFS.
+
+&#160;]]></description>
+		
+		
+		
+			</item>
+	</channel>
+</rss>
