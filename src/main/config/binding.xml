@@ -1,0 +1,43 @@
+<binding>
+
+    <!-- <namespace uri="http://www.w3.org/2005/Atom" prefix="atom"/> -->
+
+    <mapping name="item" class="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto">
+        <value name="title" field="title"/>
+        <value name ="link" field="link"/>
+        <value name="description" field="description"/>
+    </mapping>
+
+
+    <!-- <mapping name="channel" class="com.simplenewsaggregator.simplenewsaggregator.dtos.ChannelDto">
+        <value name="title" field="title"/>
+        <value name="link" field="link"/>
+        <value name="description" field="description"/>
+        <value name="language" field="language"/>
+        <value name="sy:updatePeriod" field="updatePeriod"/>
+        <value name="sy:updateFrequency" field="updateFrequency"/>
+        <collection field="items" item-type="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto"/>
+    </mapping> -->
+
+    <!-- <mapping name="rss" class="com.simplenewsaggregator.simplenewsaggregator.dtos.RssDto">
+        <value name="channel" field="channelDto"/>
+        <structure name="channel" field="channelDto">
+            
+        </structure>
+    </mapping>
+ -->
+    
+    <mapping name="rss" class="com.simplenewsaggregator.simplenewsaggregator.dtos.RssDto">
+        <namespace uri="http://purl.org/rss/1.0/modules/syndication/" prefix="sy" default="attributes"/>
+        <structure name="channel" field="channelDto">
+            <value name="title" field="title"/>
+            <value name="link" field="link"/>
+            <value name="description" field="description"/>
+            <value name="language" field="language"/>
+            <!-- <value name="sy:updatePeriod" field="updatePeriod"/>
+            <value name="sy:updateFrequency" field="updateFrequency"/> -->
+            <collection field="items" item-type="com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto"/>
+        </structure>
+    </mapping>
+
+</binding>
