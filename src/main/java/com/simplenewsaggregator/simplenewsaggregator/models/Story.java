@@ -1,10 +1,23 @@
 package com.simplenewsaggregator.simplenewsaggregator.models;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+
+
+@Entity
 public class Story {
+    @Id @GeneratedValue
+    private Long id;
     private String title;
     private String url;
     private String description;
+
+    @ManyToOne
+    private Publisher publiser;
 
     public Story() {
     }
