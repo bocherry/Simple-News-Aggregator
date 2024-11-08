@@ -13,6 +13,7 @@ import com.simplenewsaggregator.simplenewsaggregator.dtos.ChannelDto;
 import com.simplenewsaggregator.simplenewsaggregator.dtos.ItemDto;
 import com.simplenewsaggregator.simplenewsaggregator.models.Publisher;
 import com.simplenewsaggregator.simplenewsaggregator.models.PublisherConfiguration;
+import com.simplenewsaggregator.simplenewsaggregator.models.Story;
 
 @SpringBootTest
 public class ChannelMapperTest {
@@ -23,6 +24,7 @@ public class ChannelMapperTest {
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
         Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
+        System.out.println(publisher);
 
         assertNotNull(publisher);
         assertEquals(publisher.getTitle(), channelDto.getTitle());
@@ -43,5 +45,21 @@ public class ChannelMapperTest {
         assertEquals(channelDto.getUpdatePeriod(), configuration.getUpdatePeriod());
         assertEquals(channelDto.getUpdateFrequency(), configuration.getUpdateFrequency());
 
+    }
+
+    @Test
+    void shouldMapItemsListToStoriesList() {
+        ArrayList<ItemDto> itemDtos = new ArrayList<ItemDto>();
+        itemDtos.add(new ItemDto("Foo bar title", "https://foo.bar", "lorem ispum description"));
+        ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
+
+        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
+
+        ArrayList<Story> stories = publisher.getStories();
+        System.out.println(publisher);
+        assertNotNull(stories);
+        assertEquals(itemDtos.get(0).getTitle(), stories.get(0).getTitle());
+        assertEquals(itemDtos.get(0).getLink(), stories.get(0).getUrl());
+        assertEquals(itemDtos.get(0).getDescription(), stories.get(0).getDescription());
     }
 }

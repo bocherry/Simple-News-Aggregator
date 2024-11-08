@@ -17,7 +17,6 @@ public class ItemMapperTest {
         ItemDto itemDto = new ItemDto("Foobar", "http://foo.bar", "Lorem ipsum description");
 
         Story story = ItemMapper.INSTANCE.itemDtoToStory(itemDto);
-        System.out.println(story);
         assertNotNull(story);
         assertEquals(itemDto.getTitle(), story.getTitle());
         assertEquals(itemDto.getLink(), story.getUrl());

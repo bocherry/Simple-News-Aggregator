@@ -49,19 +49,14 @@ public class RSSController {
         ChannelDto channelDto = xmlUnmarshalService.unmarshalRssDto(rss).getChannelDto();
 
         Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
+        PublisherConfiguration publisherConfiguration = ChannelMapper.INSTANCE.channelDtoToPublisherConfiguration(channelDto);
 
-        ArrayList<Story> stories = new ArrayList<Story>();
-        channelDto.getItems().stream().forEach(item -> stories.add(ItemMapper.INSTANCE.itemDtoToStory(item)));
+        publisher.setConfiguration(publisherConfiguration);
 
         
-        // publisherRepository.save(ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto));
-
-        // publisherConfigurationRepository.save(ChannelMapper.INSTANCE.channelDtoToPublisherConfiguration(channelDto));
-
-        // storyRepository.saveAll(channelDto.getItems().stream().forEach(null););
-
-        // channelDto.getItems().stream().forEach(item -> System.out.println(ItemMapper.INSTANCE.itemDtoToStory(item)));
-
+        publisherRepository.save(publisher);
+        publisherConfigurationRepository.save(publisherConfiguration);
+        storyRepository.saveAll(publisher.getStories());
     }
     
 }
