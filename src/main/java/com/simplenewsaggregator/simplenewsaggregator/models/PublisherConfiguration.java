@@ -15,9 +15,7 @@ public class PublisherConfiguration {
     private String updatePeriod;
     private int updateFrequency;
 
-    @OneToOne
+    @OneToOne(targetEntity=Publisher.class)
     private Publisher publisher;
-
-
     
 }

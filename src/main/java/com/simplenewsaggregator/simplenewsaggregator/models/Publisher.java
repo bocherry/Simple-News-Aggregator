@@ -19,10 +19,10 @@ public class Publisher {
     private String url;
     private String language;
 
-    @OneToOne
+    @OneToOne(targetEntity=PublisherConfiguration.class)
     PublisherConfiguration configuration;
 
-    @OneToMany
+    @OneToMany(targetEntity=Story.class)
     ArrayList<Story> stories;
 
 }

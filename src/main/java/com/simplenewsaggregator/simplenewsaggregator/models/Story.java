@@ -16,7 +16,7 @@ public class Story {
     private String url;
     private String description;
 
-    @ManyToOne
+    @ManyToOne(targetEntity=Publisher.class)
     private Publisher publisher;
 
 }
