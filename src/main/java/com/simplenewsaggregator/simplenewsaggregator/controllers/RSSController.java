@@ -53,10 +53,10 @@ public class RSSController {
 
         publisher.setConfiguration(publisherConfiguration);
 
-        
+        System.out.println(publisher);
         publisherRepository.save(publisher);
         publisherConfigurationRepository.save(publisherConfiguration);
-        storyRepository.saveAll(publisher.getStories());
+        // storyRepository.saveAll(publisher.getStories());
     }
     
 }
