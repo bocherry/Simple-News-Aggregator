@@ -17,6 +17,6 @@ public class Story {
     private String description;
 
     @ManyToOne
-    private Publisher publiser;
+    private Publisher publisher;
 
 }

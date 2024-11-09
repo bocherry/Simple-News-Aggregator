@@ -24,7 +24,6 @@ public class ChannelMapperTest {
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
         Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
-        System.out.println(publisher);
 
         assertNotNull(publisher);
         assertEquals(publisher.getTitle(), channelDto.getTitle());

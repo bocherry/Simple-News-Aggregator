@@ -1,7 +1,5 @@
 package com.simplenewsaggregator.simplenewsaggregator.controllers;
 
-import java.util.ArrayList;
-
 import org.jibx.runtime.JiBXException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,11 +7,9 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.simplenewsaggregator.mappers.ChannelMapper;
-import com.simplenewsaggregator.mappers.ItemMapper;
 import com.simplenewsaggregator.simplenewsaggregator.dtos.ChannelDto;
 import com.simplenewsaggregator.simplenewsaggregator.models.Publisher;
 import com.simplenewsaggregator.simplenewsaggregator.models.PublisherConfiguration;
-import com.simplenewsaggregator.simplenewsaggregator.models.Story;
 import com.simplenewsaggregator.simplenewsaggregator.repositories.PublisherConfigurationRepository;
 import com.simplenewsaggregator.simplenewsaggregator.repositories.PublisherRepository;
 import com.simplenewsaggregator.simplenewsaggregator.repositories.StoryRepository;
@@ -50,12 +46,12 @@ public class RSSController {
 
         Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
         PublisherConfiguration publisherConfiguration = ChannelMapper.INSTANCE.channelDtoToPublisherConfiguration(channelDto);
-
+        publisherConfiguration.setRSSUrl(param);
         publisher.setConfiguration(publisherConfiguration);
+        
 
-        System.out.println(publisher);
-        publisherRepository.save(publisher);
-        publisherConfigurationRepository.save(publisherConfiguration);
+        // publisherRepository.save(publisher);
+        // publisherConfigurationRepository.save(publisherConfiguration);
         // storyRepository.saveAll(publisher.getStories());
     }
     
