@@ -1,9 +1,11 @@
 package com.simplenewsaggregator.simplenewsaggregator;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.simplenewsaggregator.simplenewsaggregator.models.Publisher;
 import com.simplenewsaggregator.simplenewsaggregator.models.PublisherConfiguration;
 import com.simplenewsaggregator.simplenewsaggregator.models.Story;
+import com.simplenewsaggregator.simplenewsaggregator.repositories.PublisherConfigurationRepository;
 import com.simplenewsaggregator.simplenewsaggregator.repositories.PublisherRepository;
+import com.simplenewsaggregator.simplenewsaggregator.repositories.StoryRepository;
 
 @SpringBootTest
 public class PublisherRepositoryTest {
     
     @Autowired
     private PublisherRepository repository;
+
+    @Autowired
+    private StoryRepository storyRepository;
+
+    @Autowired
+    private PublisherConfigurationRepository configurationRepository;
 
     @Test
     void shouldSaveAndRetrieveUnpopulatedPublisher() {
@@ -52,7 +62,7 @@ public class PublisherRepositoryTest {
         configuration.setUpdatePeriod("yearly");
         publisher.setConfiguration(configuration);
 
-        ArrayList<Story> stories = new ArrayList<>();
+        List<Story> stories = new ArrayList<>();
         Story storyA = new Story();
         storyA.setTitle("Title A");
         storyA.setDescription("lorem ipsum coucou");
@@ -67,7 +77,11 @@ public class PublisherRepositoryTest {
 
         publisher.setStories(stories);
 
-        assertDoesNotThrow(() -> repository.save(publisher));
+        assertDoesNotThrow(() -> {
+            configurationRepository.save(configuration);
+            storyRepository.saveAll(stories);
+            repository.save(publisher);
+        } );
         Long id = repository.save(publisher).getId();
         Publisher retrievedPublisher = repository.findById(id).get();
         assertEquals(publisher.getLanguage(), retrievedPublisher.getLanguage());

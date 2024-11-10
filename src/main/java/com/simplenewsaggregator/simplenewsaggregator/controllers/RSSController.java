@@ -49,10 +49,8 @@ public class RSSController {
         publisherConfiguration.setRSSUrl(param);
         publisher.setConfiguration(publisherConfiguration);
         
-
-        // publisherRepository.save(publisher);
-        // publisherConfigurationRepository.save(publisherConfiguration);
-        // storyRepository.saveAll(publisher.getStories());
+        publisherConfigurationRepository.save(publisherConfiguration);
+        storyRepository.saveAll(publisher.getStories());
+        publisherRepository.save(publisher);
     }
-    
 }

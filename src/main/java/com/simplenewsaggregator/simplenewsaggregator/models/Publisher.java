@@ -1,6 +1,5 @@
 package com.simplenewsaggregator.simplenewsaggregator.models;
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +22,6 @@ public class Publisher {
     PublisherConfiguration configuration;
 
     @OneToMany(targetEntity=Story.class)
-    ArrayList<Story> stories;
+    List<Story> stories;
 
 }
