@@ -19,8 +19,7 @@ import com.simplenewsaggregator.simplenewsaggregator.models.Story;
 public class ChannelMapperTest {
     @Test
     void shouldMapChanneltoToPublisher() {
-        ArrayList<ItemDto> itemDtos = new ArrayList<ItemDto>();
-        itemDtos.add(new ItemDto("Foo bar title", "https://foo.bar", "lorem ispum description"));
+        ArrayList<ItemDto> itemDtos = new ArrayList<>();
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
         Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
@@ -34,8 +33,7 @@ public class ChannelMapperTest {
 
     @Test
     void shouldMapChanneltoToPublisherConfiguration() {
-        ArrayList<ItemDto> itemDtos = new ArrayList<ItemDto>();
-        itemDtos.add(new ItemDto("Foo bar title", "https://foo.bar", "lorem ispum description"));
+        ArrayList<ItemDto> itemDtos = new ArrayList<>();
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
         PublisherConfiguration configuration = ChannelMapper.INSTANCE.channelDtoToPublisherConfiguration(channelDto);
@@ -48,17 +46,18 @@ public class ChannelMapperTest {
 
     @Test
     void shouldMapItemsListToStoriesList() {
-        ArrayList<ItemDto> itemDtos = new ArrayList<ItemDto>();
-        itemDtos.add(new ItemDto("Foo bar title", "https://foo.bar", "lorem ispum description"));
+        ArrayList<ItemDto> itemDtos = new ArrayList<>();
+        ItemDto itemDto = new ItemDto("Foo bar title", "https://foo.bar", "lorem ispum description");
+        itemDtos.add(itemDto);
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
         Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
 
-        ArrayList<Story> stories = publisher.getStories();
-        System.out.println(publisher);
-        assertNotNull(stories);
-        assertEquals(itemDtos.get(0).getTitle(), stories.get(0).getTitle());
-        assertEquals(itemDtos.get(0).getLink(), stories.get(0).getUrl());
-        assertEquals(itemDtos.get(0).getDescription(), stories.get(0).getDescription());
+        Story story = publisher.getStories().get(0);
+
+        assertNotNull(story);
+        assertEquals(itemDto.getTitle(), story.getTitle());
+        assertEquals(itemDto.getLink(), story.getUrl());
+        assertEquals(itemDto.getDescription(), story.getDescription());
     }
 }
