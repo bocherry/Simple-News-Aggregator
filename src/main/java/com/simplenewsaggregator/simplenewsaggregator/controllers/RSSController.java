@@ -2,6 +2,8 @@ package com.simplenewsaggregator.simplenewsaggregator.controllers;
 
 import org.jibx.runtime.JiBXException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -39,7 +41,7 @@ public class RSSController {
     
 
     @GetMapping("/rss")
-    public void addRSS(@RequestParam(value="url") String param) throws RestClientException, JiBXException {
+    public ResponseEntity addRSS(@RequestParam(value="url") String param) throws RestClientException, JiBXException {
         String rss = restTemplate.getForObject(param, String.class);
 
         ChannelDto channelDto = xmlUnmarshalService.unmarshalRssDto(rss).getChannelDto();
@@ -52,5 +54,7 @@ public class RSSController {
         publisherConfigurationRepository.save(publisherConfiguration);
         storyRepository.saveAll(publisher.getStories());
         publisherRepository.save(publisher);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
