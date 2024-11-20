@@ -3,6 +3,7 @@ package com.simplenewsaggregator.simplenewsaggregator.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
@@ -18,7 +19,7 @@ public class PublisherConfiguration {
     private String updatePeriod;
     private int updateFrequency;
 
-    @OneToOne(targetEntity=Publisher.class)
+    @OneToOne(targetEntity=Publisher.class, fetch = FetchType.LAZY)
     @JsonIgnore
     @ToString.Exclude private Publisher publisher;
     
