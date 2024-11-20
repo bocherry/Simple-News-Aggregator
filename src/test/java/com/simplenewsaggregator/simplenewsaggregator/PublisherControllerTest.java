@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.simplenewsaggregator.simplenewsaggregator.controllers.RSSController;
+import com.simplenewsaggregator.simplenewsaggregator.controllers.PublisherController;
 
 @SpringBootTest
-public class RSSControllerTest {
+public class PublisherControllerTest {
     
     @Autowired
-    private RSSController controller;
+    private PublisherController controller;
 
     @Test
     void shouldInitialise(){
