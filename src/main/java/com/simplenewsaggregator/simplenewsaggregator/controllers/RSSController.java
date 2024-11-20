@@ -1,7 +1,6 @@
 package com.simplenewsaggregator.simplenewsaggregator.controllers;
 
 import org.jibx.runtime.JiBXException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,44 +16,36 @@ import com.simplenewsaggregator.simplenewsaggregator.repositories.PublisherRepos
 import com.simplenewsaggregator.simplenewsaggregator.repositories.StoryRepository;
 import com.simplenewsaggregator.simplenewsaggregator.services.XMLUnmarshalService;
 
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+@RequiredArgsConstructor
 @RestController
 public class RSSController {
     
-    @Autowired
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-    @Autowired
-    private XMLUnmarshalService xmlUnmarshalService;
+    private final XMLUnmarshalService xmlUnmarshalService;
 
-    @Autowired 
-    private PublisherRepository publisherRepository;
+    private final PublisherRepository publisherRepository;
 
-    @Autowired
-    private PublisherConfigurationRepository publisherConfigurationRepository;
+    private final PublisherConfigurationRepository publisherConfigurationRepository;
 
-    @Autowired
-    private StoryRepository storyRepository;
+    private final StoryRepository storyRepository;
     
 
     @GetMapping("/rss")
-    public ResponseEntity addRSS(@RequestParam(value="url") String param) throws RestClientException, JiBXException {
-        String rss = restTemplate.getForObject(param, String.class);
+    public ResponseEntity addRSS(@RequestParam(value="url") String urlString) throws RestClientException, JiBXException {
+        String rss = restTemplate.getForObject(urlString, String.class);
 
         ChannelDto channelDto = xmlUnmarshalService.unmarshalRssDto(rss).getChannelDto();
 
-        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
-        PublisherConfiguration publisherConfiguration = ChannelMapper.INSTANCE.channelDtoToPublisherConfiguration(channelDto);
-        publisherConfiguration.setRSSUrl(param);
-        publisher.setConfiguration(publisherConfiguration);
-        
-        publisherConfigurationRepository.save(publisherConfiguration);
-        storyRepository.saveAll(publisher.getStories());
-        publisherRepository.save(publisher);
+        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto, urlString);
 
+        publisherRepository.save(publisher);
+        
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

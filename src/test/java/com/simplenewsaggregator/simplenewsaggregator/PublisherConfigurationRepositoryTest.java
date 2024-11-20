@@ -20,7 +20,7 @@ public class PublisherConfigurationRepositoryTest {
     @Test
     void shouldSaveAndRetrievePublisherConfigurationEntity() {
         PublisherConfiguration configuration = new PublisherConfiguration();
-        configuration.setRSSUrl("https://foo.bar/rss");
+        configuration.setRssUrl("https://foo.bar/rss");
         configuration.setUpdateFrequency(2);
         configuration.setUpdatePeriod("yearly");
 
@@ -30,7 +30,7 @@ public class PublisherConfigurationRepositoryTest {
         PublisherConfiguration retrievedConfiguration = repository.findById(id).get();
 
         assertNotNull(retrievedConfiguration);
-        assertEquals(configuration.getRSSUrl(), retrievedConfiguration.getRSSUrl());
+        assertEquals(configuration.getRssUrl(), retrievedConfiguration.getRssUrl());
         assertEquals(configuration.getUpdateFrequency(), retrievedConfiguration.getUpdateFrequency());
         assertEquals(configuration.getUpdatePeriod(), retrievedConfiguration.getUpdatePeriod());
     }

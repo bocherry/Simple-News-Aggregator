@@ -57,7 +57,7 @@ public class PublisherRepositoryTest {
 
         // Both could be replaced with mocks, has to enquiry how to
         PublisherConfiguration configuration = new PublisherConfiguration();
-        configuration.setRSSUrl("https://foo.bar/feed");
+        configuration.setRssUrl("https://foo.bar/feed");
         configuration.setUpdateFrequency(3);
         configuration.setUpdatePeriod("yearly");
         publisher.setConfiguration(configuration);

@@ -22,7 +22,7 @@ public class ChannelMapperTest {
         ArrayList<ItemDto> itemDtos = new ArrayList<>();
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
-        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
+        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto, "https://foo.bar/feed");
 
         assertNotNull(publisher);
         assertEquals(publisher.getTitle(), channelDto.getTitle());
@@ -36,9 +36,10 @@ public class ChannelMapperTest {
         ArrayList<ItemDto> itemDtos = new ArrayList<>();
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
-        PublisherConfiguration configuration = ChannelMapper.INSTANCE.channelDtoToPublisherConfiguration(channelDto);
+        PublisherConfiguration configuration = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto, "https://foo.bar/feed").getConfiguration();
         
         assertNotNull(configuration);
+        System.out.println(configuration);
         assertEquals(channelDto.getUpdatePeriod(), configuration.getUpdatePeriod());
         assertEquals(channelDto.getUpdateFrequency(), configuration.getUpdateFrequency());
 
@@ -51,7 +52,7 @@ public class ChannelMapperTest {
         itemDtos.add(itemDto);
         ChannelDto channelDto = new ChannelDto("Publisher title", "https://foo.bar", "Lorem ipsum description", "FO_bar", "hourly", 43, itemDtos);
 
-        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto);
+        Publisher publisher = ChannelMapper.INSTANCE.channelDtoToPublisher(channelDto, "https://foo.bar/feed");
 
         Story story = publisher.getStories().get(0);
 
