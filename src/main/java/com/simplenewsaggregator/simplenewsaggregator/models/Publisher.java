@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
@@ -21,7 +20,7 @@ public class Publisher {
     private String url;
     private String language;
 
-    @OneToOne(targetEntity=PublisherConfiguration.class, cascade = CascadeType.PERSIST)
+    @OneToOne(targetEntity=PublisherConfiguration.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "publisher")
     PublisherConfiguration configuration;
 
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "publisher")
