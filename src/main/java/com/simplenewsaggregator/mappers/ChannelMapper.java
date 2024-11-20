@@ -9,7 +9,6 @@ import org.mapstruct.factory.Mappers;
 import com.simplenewsaggregator.simplenewsaggregator.dtos.ChannelDto;
 import com.simplenewsaggregator.simplenewsaggregator.models.Publisher;
 // import com.simplenewsaggregator.simplenewsaggregator.models.PublisherConfiguration;
-import com.simplenewsaggregator.simplenewsaggregator.models.PublisherConfiguration;
 
 @Mapper(uses=ItemMapper.class)
 public interface ChannelMapper {
@@ -29,5 +28,6 @@ public interface ChannelMapper {
     @AfterMapping
     default void channelToDtoPostMapping(ChannelDto source, @MappingTarget Publisher publisher) {
         publisher.getConfiguration().setPublisher(publisher);
+        publisher.getStories().forEach((story) -> story.setPublisher(publisher));
     }
 }

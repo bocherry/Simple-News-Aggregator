@@ -1,5 +1,7 @@
 package com.simplenewsaggregator.simplenewsaggregator.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,7 @@ public class Story {
     private String description;
 
     @ManyToOne(targetEntity=Publisher.class)
+    @JsonIgnore
     private Publisher publisher;
 
 }

@@ -1,6 +1,7 @@
 package com.simplenewsaggregator.simplenewsaggregator.models;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -18,6 +19,7 @@ public class PublisherConfiguration {
     private int updateFrequency;
 
     @OneToOne(targetEntity=Publisher.class)
+    @JsonIgnore
     @ToString.Exclude private Publisher publisher;
     
 }

@@ -24,7 +24,7 @@ public class Publisher {
     @OneToOne(targetEntity=PublisherConfiguration.class, cascade = CascadeType.PERSIST)
     PublisherConfiguration configuration;
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "publisher")
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "publisher")
     List<Story> stories;
 
 }
